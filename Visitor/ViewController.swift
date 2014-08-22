@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fetchVisitsFromStore()
+        self.navigationItem.title = "Locations Visited"
     }
     
     func fetchVisitsFromStore() {
