@@ -25,10 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func createTestData() {
         if let context = self.managedObjectContext {
-            let testLocation = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as NSManagedObject
-            testLocation.setValue(97, forKey: "latitude")
-            testLocation.setValue(-32, forKey: "longitude")
-            testLocation.setValue(NSDate(), forKey: "arrivalDate")
+            let testLocation = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as Visit
+            testLocation.latitude = 97
+            testLocation.longitude = -32
+            testLocation.arrivalDate = NSDate()
             var error :NSError?
             if ( context.save(&error) ) {
                 print("Success\n")
@@ -40,16 +40,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func logAllData() {
         if let context = self.managedObjectContext {
-
-        let fetchRequest = NSFetchRequest()
-        let entityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
+            
+            let fetchRequest = NSFetchRequest()
+            let entityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
             fetchRequest.entity = entityDescription
             var error :NSError?
             let fetchedObjects = context.executeFetchRequest(fetchRequest, error: &error)
             if ( error == nil ) {
                 for object in fetchedObjects {
-                    let arrivalDate = object.valueForKey("arrivalDate") as NSDate
-                    print("arrivalDate: \(arrivalDate)\n")
+                    if let visit = object as? Visit {
+                        let arrivalDate = visit.arrivalDate
+                        print("arrivalDate: \(arrivalDate)\n")
+                    }
                 }
             } else {
                 NSLog("Error fetching")
