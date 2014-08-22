@@ -399,6 +399,7 @@
 				211DD94219A62BC200D7CA24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		211DD94319A62BC200D7CA24 /* Build configuration list for PBXNativeTarget "VisitorTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +408,7 @@
 				211DD94519A62BC200D7CA24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -11,13 +11,51 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    let entityName = "Visit"
                             
     var window: UIWindow?
 
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
-        // Override point for customization after application launch.
+        self.createTestData()
+        self.logAllData()
         return true
+    }
+    
+    func createTestData() {
+        if let context = self.managedObjectContext {
+            let testLocation = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as NSManagedObject
+            testLocation.setValue(97, forKey: "latitude")
+            testLocation.setValue(-32, forKey: "longitude")
+            testLocation.setValue(NSDate(), forKey: "arrivalDate")
+            var error :NSError?
+            if ( context.save(&error) ) {
+                print("Success\n")
+            } else  {
+                print("Problem: \(error!.description)\n")
+            }
+        }
+    }
+    
+    func logAllData() {
+        if let context = self.managedObjectContext {
+
+        let fetchRequest = NSFetchRequest()
+        let entityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
+            fetchRequest.entity = entityDescription
+            var error :NSError?
+            let fetchedObjects = context.executeFetchRequest(fetchRequest, error: &error)
+            if ( error == nil ) {
+                for object in fetchedObjects {
+                    let arrivalDate = object.valueForKey("arrivalDate") as NSDate
+                    print("arrivalDate: \(arrivalDate)\n")
+                }
+            } else {
+                NSLog("Error fetching")
+            }
+        }
+        
     }
 
     func applicationWillResignActive(application: UIApplication!) {
