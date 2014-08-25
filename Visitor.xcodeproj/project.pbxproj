@@ -13,6 +13,7 @@
 		211DD92F19A62BC100D7CA24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 211DD92D19A62BC100D7CA24 /* Main.storyboard */; };
 		211DD93119A62BC200D7CA24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 211DD93019A62BC200D7CA24 /* Images.xcassets */; };
 		211DD93D19A62BC200D7CA24 /* VisitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211DD93C19A62BC200D7CA24 /* VisitorTests.swift */; };
+		2125F80619AB67D50032EE27 /* VisitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2125F80519AB67D50032EE27 /* VisitManager.swift */; };
 		21A4FF9219A798BD00923C55 /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4FF9119A798BD00923C55 /* Visit.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		211DD93619A62BC200D7CA24 /* VisitorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisitorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		211DD93B19A62BC200D7CA24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		211DD93C19A62BC200D7CA24 /* VisitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorTests.swift; sourceTree = "<group>"; };
+		2125F80519AB67D50032EE27 /* VisitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitManager.swift; sourceTree = "<group>"; };
 		21A4FF9119A798BD00923C55 /* Visit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 				211DD92819A62BC100D7CA24 /* Visitor.xcdatamodeld */,
 				21A4FF9119A798BD00923C55 /* Visit.swift */,
 				211DD92419A62BC000D7CA24 /* Supporting Files */,
+				2125F80519AB67D50032EE27 /* VisitManager.swift */,
 			);
 			path = Visitor;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				21A4FF9219A798BD00923C55 /* Visit.swift in Sources */,
 				211DD92A19A62BC100D7CA24 /* Visitor.xcdatamodeld in Sources */,
 				211DD92719A62BC000D7CA24 /* AppDelegate.swift in Sources */,
+				2125F80619AB67D50032EE27 /* VisitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

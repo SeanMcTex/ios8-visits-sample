@@ -11,16 +11,20 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    let entityName = "Visit"
-                            
+                                
     var window: UIWindow?
+    var visitManager: VisitManager = VisitManager()
 
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
-        self.createTestData()
-        self.logAllData()
+        //self.createTestData()
+        //self.logAllData()
+        self.startMonitoringVisits()
         return true
+    }
+    
+    func startMonitoringVisits() {
+        self.visitManager.beginMonitoring()
     }
     
     func createTestData() {

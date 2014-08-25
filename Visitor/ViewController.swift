@@ -11,8 +11,6 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate {
     
-    let entityName = "Visit"
-
     @IBOutlet var tableView: UITableView!
     
     var visitsArray:[Visit] = []
@@ -21,6 +19,11 @@ class ViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         self.fetchVisitsFromStore()
         self.setupNavigation()
+        self.setupNotifications()
+    }
+    
+    func setupNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "fetchVisitsFromStore", name: "newData", object: nil)
     }
     
     func setupNavigation() {

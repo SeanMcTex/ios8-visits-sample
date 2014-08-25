@@ -9,7 +9,11 @@
 import Foundation
 import CoreData
 
+// Class Variables are not yet supported. :(
+let entityName = "Visit"
+
 class Visit: NSManagedObject {
+    
 
     @NSManaged var accuracy: NSNumber
     @NSManaged var address: String
