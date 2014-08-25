@@ -20,7 +20,29 @@ class ViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fetchVisitsFromStore()
+        self.setupNavigation()
+    }
+    
+    func setupNavigation() {
         self.navigationItem.title = "Locations Visited"
+        let trashButtonItem = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "didTapTrashButton")
+        self.navigationItem.rightBarButtonItem = trashButtonItem
+    }
+    
+    func didTapTrashButton() {
+        self.deleteAllVisits()
+        self.fetchVisitsFromStore()
+    }
+    
+    func deleteAllVisits() {
+        let app = UIApplication.sharedApplication().delegate as AppDelegate
+        if let context = app.managedObjectContext {
+            for visit in self.visitsArray {
+                context.deleteObject(visit)
+            }
+            context.save(nil)
+        }
+        self.fetchVisitsFromStore()
     }
     
     func fetchVisitsFromStore() {
@@ -33,6 +55,7 @@ class ViewController: UIViewController, UITableViewDelegate {
             var error :NSError?
             self.visitsArray = context.executeFetchRequest(fetchRequest, error: &error) as [Visit]
         }
+        self.tableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
