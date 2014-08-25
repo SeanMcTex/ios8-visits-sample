@@ -40,6 +40,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="pa9-DO-N7I" kind="show" id="oSy-0u-bnV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -57,6 +60,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="yVg-E0-hPf">
+            <objects>
+                <viewController id="pa9-DO-N7I" customClass="MapViewController" customModule="Visitor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3tS-iv-VZN"/>
+                        <viewControllerLayoutGuide type="bottom" id="zJw-UT-hNB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pNo-17-13r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WmH-Kn-Dam">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WmH-Kn-Dam" firstAttribute="leading" secondItem="pNo-17-13r" secondAttribute="leading" id="2Gu-Ls-lQd"/>
+                            <constraint firstItem="WmH-Kn-Dam" firstAttribute="top" secondItem="3tS-iv-VZN" secondAttribute="bottom" id="IFi-Ri-v1u"/>
+                            <constraint firstItem="zJw-UT-hNB" firstAttribute="top" secondItem="WmH-Kn-Dam" secondAttribute="bottom" id="KU3-rq-I7G"/>
+                            <constraint firstAttribute="trailing" secondItem="WmH-Kn-Dam" secondAttribute="trailing" id="OeG-Ku-AV9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="WmH-Kn-Dam" id="v9T-Su-iih"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jhD-vB-iay" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1224" y="460"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XOn-Cm-Y3a">

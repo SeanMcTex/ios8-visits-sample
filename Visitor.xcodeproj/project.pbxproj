@@ -14,6 +14,7 @@
 		211DD93119A62BC200D7CA24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 211DD93019A62BC200D7CA24 /* Images.xcassets */; };
 		211DD93D19A62BC200D7CA24 /* VisitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211DD93C19A62BC200D7CA24 /* VisitorTests.swift */; };
 		2125F80619AB67D50032EE27 /* VisitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2125F80519AB67D50032EE27 /* VisitManager.swift */; };
+		2125F80A19AB9B910032EE27 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2125F80919AB9B910032EE27 /* MapViewController.swift */; };
 		21A4FF9219A798BD00923C55 /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4FF9119A798BD00923C55 /* Visit.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		211DD93B19A62BC200D7CA24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		211DD93C19A62BC200D7CA24 /* VisitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorTests.swift; sourceTree = "<group>"; };
 		2125F80519AB67D50032EE27 /* VisitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitManager.swift; sourceTree = "<group>"; };
+		2125F80919AB9B910032EE27 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		21A4FF9119A798BD00923C55 /* Visit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +83,7 @@
 		211DD92319A62BBF00D7CA24 /* Visitor */ = {
 			isa = PBXGroup;
 			children = (
+				2125F80919AB9B910032EE27 /* MapViewController.swift */,
 				211DD92619A62BC000D7CA24 /* AppDelegate.swift */,
 				211DD92B19A62BC100D7CA24 /* ViewController.swift */,
 				211DD92D19A62BC100D7CA24 /* Main.storyboard */,
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				211DD92C19A62BC100D7CA24 /* ViewController.swift in Sources */,
+				2125F80A19AB9B910032EE27 /* MapViewController.swift in Sources */,
 				21A4FF9219A798BD00923C55 /* Visit.swift in Sources */,
 				211DD92A19A62BC100D7CA24 /* Visitor.xcdatamodeld in Sources */,
 				211DD92719A62BC000D7CA24 /* AppDelegate.swift in Sources */,

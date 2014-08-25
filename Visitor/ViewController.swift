@@ -89,7 +89,13 @@ class ViewController: UIViewController, UITableViewDelegate {
         
         return cell
     }
-
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        let indexPath = self.tableView.indexPathForSelectedRow()
+        let visit = self.visitsArray[ indexPath.row ]
+        let destinationViewController = segue.destinationViewController as MapViewController
+        destinationViewController.visit = visit
+    }
+    
     
 
 
