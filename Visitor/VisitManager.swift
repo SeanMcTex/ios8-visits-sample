@@ -30,22 +30,25 @@ class VisitManager: NSObject, CLLocationManagerDelegate {
     }
     
     func saveVisit(visit: CLVisit) {
-        let app = UIApplication.sharedApplication().delegate as AppDelegate
-        if let context = app.managedObjectContext {
-            let testLocation = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as Visit
-            
-            testLocation.latitude = visit.coordinate.latitude
-            testLocation.longitude = visit.coordinate.longitude
-            testLocation.arrivalDate = visit.arrivalDate
-            testLocation.departureDate = visit.departureDate
-            testLocation.accuracy = visit.horizontalAccuracy
-            
-            var error :NSError?
-            if ( context.save(&error) ) {
-                print("Success\n")
-                self.sendNewDataNotification()
-            } else  {
-                print("Problem: \(error!.description)\n")
+        let isDepartureVisit = visit.departureDate != NSDate.distantFuture() as? NSDate
+        if ( isDepartureVisit ) {
+            let app = UIApplication.sharedApplication().delegate as AppDelegate
+            if let context = app.managedObjectContext {
+                let testLocation = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as Visit
+                
+                testLocation.latitude = visit.coordinate.latitude
+                testLocation.longitude = visit.coordinate.longitude
+                testLocation.arrivalDate = visit.arrivalDate
+                testLocation.departureDate = visit.departureDate
+                testLocation.accuracy = visit.horizontalAccuracy
+                
+                var error :NSError?
+                if ( context.save(&error) ) {
+                    print("Success\n")
+                    self.sendNewDataNotification()
+                } else  {
+                    print("Problem: \(error!.description)\n")
+                }
             }
         }
     }
