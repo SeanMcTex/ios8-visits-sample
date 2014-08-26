@@ -85,10 +85,25 @@ class ViewController: UIViewController, UITableViewDelegate {
         
         let visit = self.visitsArray[ indexPath.row ]
         cell.textLabel.text = "Visit!"
-        cell.detailTextLabel.text = visit.arrivalDate.description
+        cell.detailTextLabel.text = self.durationTextForVisit(visit)
         
         return cell
     }
+    
+    func durationTextForVisit( visit: Visit ) -> NSString {
+        let interval = visit.departureDate.timeIntervalSinceDate( visit.arrivalDate )
+        let minutes = Int( floor( interval / 60 ) )
+        let hours = Int( floor( interval / ( 60 * 60 ) ) )
+        
+        var components = NSDateComponents()
+        components.minute = minutes
+        components.hour = hours
+        
+        let formatter = NSDateComponentsFormatter()
+        formatter.unitsStyle = .Positional
+        return formatter.stringFromDateComponents( components )
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
         let indexPath = self.tableView.indexPathForSelectedRow()
         let visit = self.visitsArray[ indexPath.row ]
