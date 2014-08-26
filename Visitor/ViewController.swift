@@ -95,17 +95,21 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     
     func durationTextForVisit( visit: Visit ) -> NSString {
-        let interval = visit.departureDate.timeIntervalSinceDate( visit.arrivalDate )
-        let minutes = Int( floor( interval / 60 ) )
-        let hours = Int( floor( interval / ( 60 * 60 ) ) )
-        
-        var components = NSDateComponents()
-        components.minute = minutes
-        components.hour = hours
-        
-        let formatter = NSDateComponentsFormatter()
-        formatter.unitsStyle = .Positional
-        return formatter.stringFromDateComponents( components )
+        if ( visit.arrivalDate != NSDate.distantPast() as NSDate ) {
+            let interval = visit.departureDate.timeIntervalSinceDate( visit.arrivalDate )
+            let minutes = Int( floor( interval / 60 ) )
+            let hours = Int( floor( interval / ( 60 * 60 ) ) )
+            
+            var components = NSDateComponents()
+            components.minute = minutes
+            components.hour = hours
+            
+            let formatter = NSDateComponentsFormatter()
+            formatter.unitsStyle = .Positional
+            return "Duration: " + formatter.stringFromDateComponents( components )
+        } else {
+            return "Duration: Unknown"
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
