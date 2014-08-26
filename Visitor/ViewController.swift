@@ -105,7 +105,8 @@ class ViewController: UIViewController, UITableViewDelegate {
             components.hour = hours
             
             let formatter = NSDateComponentsFormatter()
-            formatter.unitsStyle = .Positional
+            formatter.unitsStyle = .Abbreviated
+
             return "Duration: " + formatter.stringFromDateComponents( components )
         } else {
             return "Duration: Unknown"
