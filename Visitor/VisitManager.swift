@@ -24,12 +24,24 @@ class VisitManager: NSObject, CLLocationManagerDelegate {
         locationManager.stopMonitoringVisits()
     }
     
-    func locationManager(manager: CLLocationManager!, didVisit visit: CLVisit!) {
-        print("Visit: \(visit)")
-        self.saveVisit(visit)
+    func locationManager(manager: CLLocationManager!, didVisit clVisit: CLVisit!) {
+        if let visit = self.getVisitFromCLVisit( clVisit ) {
+            visit.save()
+            self.geocodeVisit( visit )            
+        }
     }
     
-    func saveVisit(visit: CLVisit) {
+    func geocodeVisit( visit: Visit ) {
+        let geocoder = CLGeocoder()
+        let location = CLLocation(latitude: visit.latitude, longitude: visit.longitude)
+        geocoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
+            let placemark = placemarks[0] as CLPlacemark
+            visit.placeName = placemark.name
+            visit.save()
+        }
+    }
+    
+    func getVisitFromCLVisit(visit: CLVisit) -> Visit? {
         let isDepartureVisit = visit.departureDate != NSDate.distantFuture() as? NSDate
         if ( isDepartureVisit ) {
             let app = UIApplication.sharedApplication().delegate as AppDelegate
@@ -42,18 +54,10 @@ class VisitManager: NSObject, CLLocationManagerDelegate {
                 testLocation.departureDate = visit.departureDate
                 testLocation.accuracy = visit.horizontalAccuracy
                 
-                var error :NSError?
-                if ( context.save(&error) ) {
-                    print("Success\n")
-                    self.sendNewDataNotification()
-                } else  {
-                    print("Problem: \(error!.description)\n")
-                }
+                return testLocation
             }
         }
+        return nil
     }
     
-    func sendNewDataNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName("newData", object: nil)
-    }
 }

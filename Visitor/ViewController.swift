@@ -84,7 +84,11 @@ class ViewController: UIViewController, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("VisitCellIdentifier", forIndexPath: indexPath) as UITableViewCell
         
         let visit = self.visitsArray[ indexPath.row ]
-        cell.textLabel.text = "Visit!"
+        if let placeName = visit.placeName? {
+            cell.textLabel.text = placeName
+        } else {
+            cell.textLabel.text = "Location Unknown"
+        }
         cell.detailTextLabel.text = self.durationTextForVisit(visit)
         
         return cell
