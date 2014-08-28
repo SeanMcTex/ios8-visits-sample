@@ -109,7 +109,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     func durationTextForVisit( visit: Visit ) -> NSString {
         if ( visit.arrivalDate != NSDate.distantPast() as NSDate ) {
             let interval = visit.departureDate.timeIntervalSinceDate( visit.arrivalDate )
-            let minutes = Int( floor( interval / 60 ) )
+            let minutes = Int( floor( interval / 60 ) ) % 60
             let hours = Int( floor( interval / ( 60 * 60 ) ) )
             
             var components = NSDateComponents()
