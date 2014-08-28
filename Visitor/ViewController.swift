@@ -33,8 +33,20 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     
     func didTapTrashButton() {
-        self.deleteAllVisits()
-        self.fetchVisitsFromStore()
+        let sheet = UIAlertController(title: "Delete All Records?", message: "Delete all of the existing location records?", preferredStyle: UIAlertControllerStyle.Alert)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+            sheet.dismissViewControllerAnimated(false, completion: nil)
+        }
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { (action) -> Void in
+            self.deleteAllVisits()
+            self.fetchVisitsFromStore()
+        }
+
+        sheet.addAction(cancelAction)
+        sheet.addAction(okAction)
+        
+        self.presentViewController(sheet, animated: true, completion: nil)
     }
     
     func deleteAllVisits() {
