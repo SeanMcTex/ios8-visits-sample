@@ -97,11 +97,11 @@ class ViewController: UIViewController, UITableViewDelegate {
         
         let visit = self.visitsArray[ indexPath.row ]
         if let placeName = visit.placeName? {
-            cell.textLabel.text = placeName
+            cell.textLabel?.text = placeName
         } else {
-            cell.textLabel.text = "Location Unknown"
+            cell.textLabel?.text = "Location Unknown"
         }
-        cell.detailTextLabel.text = self.durationTextForVisit(visit)
+        cell.detailTextLabel?.text = self.durationTextForVisit(visit)
         
         return cell
     }
@@ -119,15 +119,15 @@ class ViewController: UIViewController, UITableViewDelegate {
             let formatter = NSDateComponentsFormatter()
             formatter.unitsStyle = .Abbreviated
 
-            return "Duration: " + formatter.stringFromDateComponents( components )
+            return "Duration: " + formatter.stringFromDateComponents( components )!
         } else {
             return "Duration: Unknown"
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let indexPath = self.tableView.indexPathForSelectedRow()
-        let visit = self.visitsArray[ indexPath.row ]
+        let visit = self.visitsArray[ indexPath!.row ]
         let destinationViewController = segue.destinationViewController as MapViewController
         destinationViewController.visit = visit
     }

@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var error :NSError?
             let fetchedObjects = context.executeFetchRequest(fetchRequest, error: &error)
             if ( error == nil ) {
-                for object in fetchedObjects {
+                for object in fetchedObjects! {
                     if let visit = object as? Visit {
                         let arrivalDate = visit.arrivalDate
                         print("arrivalDate: \(arrivalDate)\n")
@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle.mainBundle().URLForResource("Visitor", withExtension: "momd")
-        return NSManagedObjectModel(contentsOfURL: modelURL)
+        return NSManagedObjectModel(contentsOfURL: modelURL!)
     }()
 
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
